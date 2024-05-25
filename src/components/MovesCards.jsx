@@ -10,6 +10,7 @@ import { format } from "date-fns";
 import { FaCalendar } from "react-icons/fa";
 import { GoAlertFill } from "react-icons/go";
 import AdditionalData from "./AdditionalData";
+
 export default function MovesCards({ item }) {
   const iconClass = "flex items-center gap-2";
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function MovesCards({ item }) {
   const toggleSection = () => {
     setIsOpen(!isOpen);
   };
-
+  console.log(item);
   return (
     <div className="p-4 m-4">
       <div className="flex justify-between items-center text-lg">
@@ -92,7 +93,7 @@ export default function MovesCards({ item }) {
         </div>
       </div>
 
-      {isOpen && <AdditionalData />}
+      {isOpen && <AdditionalData item={item} />}
 
       <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
     </div>
