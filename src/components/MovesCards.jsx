@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import {
   FaArrowRight,
   FaBoxesStacked,
@@ -8,9 +9,15 @@ import {
 import { format } from "date-fns";
 import { FaCalendar } from "react-icons/fa";
 import { GoAlertFill } from "react-icons/go";
+import AdditionalData from "./AdditionalData";
 export default function MovesCards({ item }) {
   const iconClass = "flex items-center gap-2";
-  console.log(item);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSection = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="p-4 m-4">
       <div className="flex justify-between items-center text-lg">
@@ -32,7 +39,7 @@ export default function MovesCards({ item }) {
       </div>
       {/* // */}
       <div className="flex flex-col lg:flex-row justify-between items-center my-4">
-        <div className="flex justify-between items-center gap-2">
+        <div className="flex justify-between items-center gap-2 w-full">
           <div className={iconClass}>
             <FaHouse className="text-red-500" />
             <span>{item.property_size}</span>
@@ -53,7 +60,7 @@ export default function MovesCards({ item }) {
           </div>
         </div>
 
-        <div className="flex justify-between items-center my-4 gap-4 lg:gap-0 ">
+        <div className="flex justify-end items-center my-4 gap-4 w-full">
           <div className={iconClass}>
             <input
               type="checkbox"
@@ -66,7 +73,10 @@ export default function MovesCards({ item }) {
             </label>
           </div>
 
-          <button className="border font-semibold px-2 py-2 border-red-500 rounded-sm text-red-500 hover:bg-slate-50">
+          <button
+            onClick={toggleSection}
+            className="border font-semibold px-2 py-2 border-red-500 rounded-sm text-red-500 hover:bg-slate-50"
+          >
             View more Details
           </button>
           <button className="border font-semibold px-2 py-2 border-red-500 rounded-sm text-white bg-red-500">
@@ -74,13 +84,15 @@ export default function MovesCards({ item }) {
           </button>
         </div>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mb-4">
         <GoAlertFill className="text-red-500 w-3 h-3" />
         <div className="text-xs">
           <span className="font-bold">Disclaimer: </span>
           Please update your move data before two days of shifting
         </div>
       </div>
+
+      {isOpen && <AdditionalData />}
 
       <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
     </div>

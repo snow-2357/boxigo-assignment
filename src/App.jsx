@@ -6,7 +6,7 @@ import Sidenav from "./components/Sidenav";
 function App() {
   return (
     <div className="flex ">
-      <div className="w-60 hidden lg:block">
+      <div className="w-44 hidden lg:block">
         <Sidenav />
       </div>
       <MyMoves />
