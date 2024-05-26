@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import ItemList from "./ItemList";
 
 // eslint-disable-next-line react/prop-types
 export default function AdditionalData({ item }) {
@@ -29,7 +30,7 @@ export default function AdditionalData({ item }) {
               title={item.displayName}
               count={item.category.length ?? 0}
             >
-              <p>Content for Accordion 1 goes here.</p>
+              <ItemList items={item.category} />
             </Accordion>
           );
         })}
