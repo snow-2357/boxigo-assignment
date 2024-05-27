@@ -9,9 +9,14 @@ export default function ItemList({ items }) {
         items.map((item) => {
           return (
             <div key={item.id} className="p-4">
-              <h1 className="font-semibold text-md">{item.displayName}</h1>
+              <h1 className="font-semibold text-md my-4">{item.displayName}</h1>
               {item.items.map((childItem) => {
-                return <h1 key={childItem.id}>{childItem.displayName}</h1>;
+                return (
+                  <div key={childItem.id} className="flex justify-between">
+                    <h1>{childItem.displayName}</h1>
+                    <p>{childItem.qty}</p>
+                  </div>
+                );
               })}
             </div>
           );
